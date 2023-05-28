@@ -1,6 +1,9 @@
 CMD = cmd
+SERVER = server
+
 BUILD = build
 GEN = gen
+INIT = init
 
 ENTRY = main.go
 
@@ -8,13 +11,13 @@ GOCMD = $$(which go)
 
 all: help
 
-## Build
-build: vendor ## Build application
-	@echo "${YELLOW}Building server example files ...${YELLOW}"
+## Serve
+server: vendor ## Build application
+	@echo "${YELLOW}Building server ...${YELLOW}"
 	@GO111MODULE=on \
 	CGO_ENABLED=0 \
 	GOARCH=amd64 \
-	$(GOCMD) build -mod vendor -o $(BUILD)/$(BINARY_NAME) $(CMD)/$(SERVER)/$(ENTRY)
+	$(GOCMD) build -mod vendor -o $(INIT)/$(BINARY_NAME) $(CMD)/$(SERVER)/$(ENTRY)
 	@echo "${CYAN}Build done${CYAN}"
 
 ## Vet:
