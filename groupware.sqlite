@@ -1,0 +1,112 @@
+CREATE TABLE IF NOT EXISTS "user" (
+    "id"         INTEGER PRIMARY KEY AUTOINCREMENT,
+    "email"      TEXT NOT NULL,
+    "password"   TEXT NOT NULL,
+    "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "group" (
+    "id"          INTEGER PRIMARY KEY AUTOINCREMENT,
+    "owner_id"    INTEGER NOT NULL,
+    "name"        TEXT NOT NULL,
+    "description" TEXT,
+    "summary"     TEXT
+);
+
+CREATE TABLE IF NOT EXISTS "document" (
+    "id"         INTEGER PRIMARY KEY AUTOINCREMENT,
+    "group_id"   INTEGER NOT NULL,
+    "author_id"  INTEGER NOT NULL,
+    "email"      TEXT NOT NULL,
+    "password"   TEXT NOT NULL,
+    "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS "role" (
+    "id"       INTEGER PRIMARY KEY AUTOINCREMENT,
+    "group_id" INTEGER NOT NULL,
+    "name"     TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "membership" (
+    "id"         INTEGER PRIMARY KEY AUTOINCREMENT,
+    "user_id"    INTEGER NOT NULL,
+    "group_id"   INTEGER NOT NULL,
+    "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "deleted_at" TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS "permission" (
+    "id"      INTEGER PRIMARY KEY AUTOINCREMENT,
+    "role_id" INTEGER NOT NULL,
+    "name"    TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "invitation" (
+    "id"         INTEGER PRIMARY KEY AUTOINCREMENT,
+    "user_id"    INTEGER NOT NULL,
+    "group_id"   INTEGER NOT NULL,
+    "link"       TEXT NOT NULL,
+    "expired_at" TIMESTAMP NOT NULL,
+    "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS "message" (
+    "id"          INTEGER PRIMARY KEY AUTOINCREMENT,
+    "sender_id"   INTEGER NOT NULL,
+    "receiver_id" INTEGER NOT NULL,
+    "content"     TEXT NOT NULL,
+    "created_at"  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at"  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX IF NOT EXISTS "idx_membership_deleted_at" ON "membership" ("deleted_at");
+
+-- Add foreign key constraints
+ALTER TABLE "group" ADD CONSTRAINT "FK_user_TO_group_1"
+    FOREIGN KEY ("owner_id")
+    REFERENCES "user" ("id");
+
+ALTER TABLE "document" ADD CONSTRAINT "FK_group_TO_document_1"
+    FOREIGN KEY ("group_id")
+    REFERENCES "group" ("id");
+
+ALTER TABLE "document" ADD CONSTRAINT "FK_user_TO_document_1"
+    FOREIGN KEY ("author_id")
+    REFERENCES "user" ("id");
+
+ALTER TABLE "role" ADD CONSTRAINT "FK_group_TO_role_1"
+    FOREIGN KEY ("group_id")
+    REFERENCES "group" ("id");
+
+ALTER TABLE "membership" ADD CONSTRAINT "FK_user_TO_membership_1"
+    FOREIGN KEY ("user_id")
+    REFERENCES "user" ("id");
+
+ALTER TABLE "membership" ADD CONSTRAINT "FK_group_TO_membership_1"
+    FOREIGN KEY ("group_id")
+    REFERENCES "group" ("id");
+
+ALTER TABLE "permission" ADD CONSTRAINT "FK_role_TO_permission_1"
+    FOREIGN KEY ("role_id")
+    REFERENCES "role" ("id");
+
+ALTER TABLE "invitation" ADD CONSTRAINT "FK_user_TO_invitation_1"
+    FOREIGN KEY ("user_id")
+    REFERENCES "user" ("id");
+
+ALTER TABLE "invitation" ADD CONSTRAINT "FK_group_TO_invitation_1"
+    FOREIGN KEY ("group_id")
+    REFERENCES "group" ("id");
+
+ALTER TABLE "message" ADD CONSTRAINT "FK_user_TO_message_1"
+    FOREIGN KEY ("sender_id")
+    REFERENCES "user" ("id");
+
+ALTER TABLE "message" ADD CONSTRAINT "FK_user_TO_message_2"
+    FOREIGN KEY ("receiver_id")
+    REFERENCES "user" ("id");
