@@ -1,12 +1,21 @@
 package server
 
+import (
+	"flag"
+	"groupware/internal/config"
+	"log"
+)
+
+var (
+	AppMode = flag.String("mode", "dev", "Application mode")
+)
+
 func Run() {
 
-	// Get configs
+	flag.Parse()
 
-	// Database configuration
+	log.Println(AppMode)
 
-	// Start database
-
-	// Start server
+	db := config.Database(*AppMode)
+	config.Migrate(db)
 }

@@ -7,8 +7,7 @@ type Role struct {
 }
 
 func (r *Role) TableName() string {
-	//TODO implement me
-	panic("implement me")
+	return "role"
 }
 
 func (r *Role) FindAll(limit, offset int) ([]*Role, error) {

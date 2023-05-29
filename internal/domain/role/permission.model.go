@@ -7,8 +7,7 @@ type Permission struct {
 }
 
 func (p *Permission) TableName() string {
-	//TODO implement me
-	panic("implement me")
+	return "permission"
 }
 
 func (p *Permission) FindAll(limit, offset int) ([]*Permission, error) {

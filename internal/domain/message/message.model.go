@@ -14,8 +14,7 @@ type Message struct {
 }
 
 func (m *Message) TableName() string {
-	//TODO implement me
-	panic("implement me")
+	return "message"
 }
 
 func (m *Message) FindAll(limit, offset int) ([]*Message, error) {

@@ -1,7 +1,9 @@
 package database
 
+import "gorm.io/gorm"
+
 type Model interface {
 	TableName() string
-	FindAll(limit, offset int) ([]Model, error)
-	FindOne(id uint) (Model, error)
+	FindAll(db *gorm.DB, limit, offset int) ([]Model, error)
+	FindOne(db *gorm.DB, id uint) (Model, error)
 }

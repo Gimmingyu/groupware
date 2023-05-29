@@ -15,7 +15,7 @@ all: help
 server: vendor ## Build application
 	@echo "${YELLOW}Building server ...${YELLOW}"
 	@GO111MODULE=on \
-	CGO_ENABLED=0 \
+	CGO_ENABLED=1 \
 	GOARCH=amd64 \
 	$(GOCMD) build -mod vendor -o $(INIT)/$(BINARY_NAME) $(CMD)/$(SERVER)/$(ENTRY)
 	@echo "${CYAN}Build done${CYAN}"

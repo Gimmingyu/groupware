@@ -16,8 +16,7 @@ type Invitation struct {
 }
 
 func (i *Invitation) TableName() string {
-	//TODO implement me
-	panic("implement me")
+	return "invitation"
 }
 
 func (i *Invitation) FindAll(limit, offset int) ([]database.Model, error) {

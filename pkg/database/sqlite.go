@@ -1,7 +1,6 @@
 package database
 
 import (
-	"fmt"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -10,12 +9,8 @@ import (
 	"time"
 )
 
-func dsn(user, password, host, port string, name string) string {
-	return fmt.Sprintf("%v:%v@tcp(%v:%v)/%v?parseTime=true", user, password, host, port, name)
-}
-
-func Sqlite() *gorm.DB {
-	db, err := gorm.Open(sqlite.Open("group.db"), &gorm.Config{
+func Sqlite(dsn string) *gorm.DB {
+	db, err := gorm.Open(sqlite.Open(dsn), &gorm.Config{
 		Logger: logger.New(log.New(os.Stdout, "\r\n", log.LstdFlags),
 			logger.Config{
 				LogLevel: logger.Info, // Log level
