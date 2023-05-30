@@ -15,4 +15,5 @@ func Run() {
 
 	db := config.Database(*AppMode)
 	config.Migrate(db)
+
 }

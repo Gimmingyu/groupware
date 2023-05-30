@@ -4,7 +4,23 @@ Groupware application
 
 ## ERD
 
-## Directory
-
 ## Domain
 
+- [ ] Document
+  - [ ] Handler
+  - [ ] Service
+- [ ] Group
+  - [ ] Handler
+  - [ ] Service
+- [ ] Member
+  - [ ] Handler
+  - [ ] Service
+- [ ] Message
+  - [ ] Handler
+  - [ ] Service
+- [ ] Role
+  - [ ] Handler
+  - [ ] Service
+- [ ] User
+  - [ ] Handler
+  - [ ] Service
