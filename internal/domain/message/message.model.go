@@ -16,13 +16,3 @@ type Message struct {
 func (m *Message) TableName() string {
 	return "message"
 }
-
-func (m *Message) FindAll(limit, offset int) ([]*Message, error) {
-	//TODO implement me
-	panic("implement me")
-}
-
-func (m *Message) FindOne(id uint) (*Message, error) {
-	//TODO implement me
-	panic("implement me")
-}

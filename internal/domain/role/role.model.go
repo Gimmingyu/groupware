@@ -9,13 +9,3 @@ type Role struct {
 func (r *Role) TableName() string {
 	return "role"
 }
-
-func (r *Role) FindAll(limit, offset int) ([]*Role, error) {
-	//TODO implement me
-	panic("implement me")
-}
-
-func (r *Role) FindOne(id uint) (*Role, error) {
-	//TODO implement me
-	panic("implement me")
-}

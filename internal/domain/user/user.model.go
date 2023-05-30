@@ -15,13 +15,3 @@ type User struct {
 func (u *User) TableName() string {
 	return "user"
 }
-
-func (u *User) FindAll(limit, offset int) ([]*User, error) {
-	//TODO implement me
-	panic("implement me")
-}
-
-func (u *User) FindOne(id uint) (*User, error) {
-	//TODO implement me
-	panic("implement me")
-}

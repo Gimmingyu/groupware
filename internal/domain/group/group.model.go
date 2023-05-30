@@ -11,13 +11,3 @@ type Group struct {
 func (g *Group) TableName() string {
 	return "group"
 }
-
-func (g *Group) FindAll(limit, offset int) ([]*Group, error) {
-	//TODO implement me
-	panic("implement me")
-}
-
-func (g *Group) FindOne(id uint) (*Group, error) {
-	//TODO implement me
-	panic("implement me")
-}

@@ -1,7 +1,6 @@
 package group
 
 import (
-	"groupware/pkg/database"
 	"time"
 )
 
@@ -17,14 +16,4 @@ type Invitation struct {
 
 func (i *Invitation) TableName() string {
 	return "invitation"
-}
-
-func (i *Invitation) FindAll(limit, offset int) ([]database.Model, error) {
-	//TODO implement me
-	panic("implement me")
-}
-
-func (i *Invitation) FindOne(id uint) (database.Model, error) {
-	//TODO implement me
-	panic("implement me")
 }

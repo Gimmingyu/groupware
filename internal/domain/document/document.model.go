@@ -17,13 +17,3 @@ type Document struct {
 func (d *Document) TableName() string {
 	return "document"
 }
-
-func (d *Document) FindAll(limit, offset int) ([]*Document, error) {
-	//TODO implement me
-	panic("implement me")
-}
-
-func (d *Document) FindOne(id uint) (*Document, error) {
-	//TODO implement me
-	panic("implement me")
-}

@@ -9,13 +9,3 @@ type Permission struct {
 func (p *Permission) TableName() string {
 	return "permission"
 }
-
-func (p *Permission) FindAll(limit, offset int) ([]*Permission, error) {
-	//TODO implement me
-	panic("implement me")
-}
-
-func (p *Permission) FindOne(id uint) (*Permission, error) {
-	//TODO implement me
-	panic("implement me")
-}

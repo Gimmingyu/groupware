@@ -17,13 +17,3 @@ type Membership struct {
 func (m *Membership) TableName() string {
 	return "membership"
 }
-
-func (m *Membership) FindAll(limit, offset int) ([]*Membership, error) {
-	//TODO implement me
-	panic("implement me")
-}
-
-func (m *Membership) FindOne(id uint) (*Membership, error) {
-	//TODO implement me
-	panic("implement me")
-}

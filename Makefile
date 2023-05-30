@@ -11,7 +11,7 @@ GOCMD = $$(which go)
 
 all: help
 
-## Serve
+## Server
 server: vendor ## Build application
 	@echo "${YELLOW}Building server ...${YELLOW}"
 	@GO111MODULE=on \
