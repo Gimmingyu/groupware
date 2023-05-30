@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/joho/godotenv"
 	"groupware/internal/server"
 	"log"
 	"os"
@@ -8,6 +9,10 @@ import (
 )
 
 func main() {
+
+	if err := godotenv.Load(".env"); err != nil {
+		log.Fatal(err)
+	}
 
 	go server.Run()
 
