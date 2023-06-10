@@ -20,7 +20,6 @@ vendor/
 # Go workspace file
 go.work
 
-build/
 gen/
 docs/
 *.env
