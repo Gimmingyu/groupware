@@ -8,6 +8,11 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 
 abstract contract Group is Initializable, UUPSUpgradeable {
 
+    struct Group {
+        string name;
+        mapping(address => bool) members;
+    }
+
     function initialize() initializer public {
         __UUPSUpgradeable_init();
     }
